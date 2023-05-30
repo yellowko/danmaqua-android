@@ -14,7 +14,7 @@ import androidx.view.avatarUrl
 
 object DataBindingAdapters {
 
-    @BindingAdapter("app:avatarUrl")
+    @BindingAdapter("avatarUrl")
     @JvmStatic
     fun setAvatarUrl(imageView: ImageView, url: String?) {
         imageView.avatarUrl = url
@@ -26,7 +26,7 @@ object DataBindingAdapters {
         textView.text = textTranslation()
     }
 
-    @BindingAdapter("app:htmlText")
+    @BindingAdapter("htmlText")
     @JvmStatic
     fun setHtmlText(textView: TextView, html: String?) {
         textView.text = html?.let {
@@ -34,25 +34,25 @@ object DataBindingAdapters {
         }
     }
 
-    @BindingAdapter("app:htmlText")
+    @BindingAdapter("htmlText")
     @JvmStatic
     fun setHtmlText(textView: TextView, @StringRes htmlResource: Int) {
         setHtmlText(textView, textView.resources.getString(htmlResource))
     }
 
-    @BindingAdapter("app:isVisible")
+    @BindingAdapter("isVisible")
     @JvmStatic
     fun setVisible(view: View, isVisible: Boolean) {
         view.isVisible = isVisible
     }
 
-    @BindingAdapter("app:isInvisible")
+    @BindingAdapter("isInvisible")
     @JvmStatic
     fun setInvisible(view: View, isInvisible: Boolean) {
         view.isInvisible = isInvisible
     }
 
-    @BindingAdapter("app:isGone")
+    @BindingAdapter("isGone")
     @JvmStatic
     fun setGone(view: View, isGone: Boolean) {
         view.isGone = isGone

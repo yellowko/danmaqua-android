@@ -4,19 +4,28 @@ buildscript {
     ext {
     }
     repositories {
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        mavenLocal()
+        mavenCentral()
         google()
         jcenter()
     }
     dependencies {
-        classpath deps.android.gradle_plugin
+        classpath 'com.android.tools.build:gradle'
         classpath deps.kotlin.gradle_plugin
+        //自动寻找ID
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.30-RC"
         classpath deps.google.gms_plugin
-        classpath deps.google.firebase.crashlytics_plugin
+        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.5.2'
+        classpath 'com.android.tools.build:gradle:7.0.1'
     }
 }
 
 allprojects {
     repositories {
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        mavenLocal()
+        mavenCentral()
         google()
         jcenter()
         maven { url "https://www.jitpack.io" }

@@ -1,5 +1,6 @@
 package moe.feng.danmaqua.ui.common.view
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Build
 import android.util.AttributeSet
@@ -37,6 +38,7 @@ constructor(
         }
     }
 
+    @SuppressLint("SoonBlockedPrivateApi")
     private fun getHintHacky(): CharSequence? {
         val hintField = TextView::class.java.getDeclaredField("mHint").apply {
             isAccessible = true

@@ -16,7 +16,7 @@
         android:background="?android:attr/selectableItemBackground">
 
         <TextView
-            android:id="@android:id/text1"
+            android:id="@+id/text1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:htmlText="@{@string/main_danmaku_text_format(data.senderName, data.text)}"

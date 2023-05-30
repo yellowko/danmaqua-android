@@ -2,7 +2,7 @@
 <merge xmlns:android="http://schemas.android.com/apk/res/android">
 
     <ImageView
-        android:id="@android:id/icon"
+        android:id="@+id/icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
@@ -11,7 +11,7 @@
         android:tint="?android:attr/textColorPrimary" />
 
     <TextView
-        android:id="@android:id/text1"
+        android:id="@+id/text1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"

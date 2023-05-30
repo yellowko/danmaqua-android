@@ -16,7 +16,7 @@ import moe.feng.danmaqua.model.Subscription
     Subscription::class,
     BlockedUserRule::class,
     PatternRulesItem::class
-], version = 4)
+], version = 4, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class DanmaquaDB : RoomDatabase() {
 
