@@ -7,4 +7,7 @@
     <integer name="floating_text_size_min">10</integer>
     <integer name="floating_text_size_max">30</integer>
 
+    <integer name="floating_width_landscape_min">30</integer>
+    <integer name="floating_width_landscape_max">100</integer>
+
 </resources>

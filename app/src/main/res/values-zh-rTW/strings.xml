@@ -184,6 +184,10 @@
     ]]></string>
     <string name="floating_text_size_title">字幕字體大小</string>
     <string name="floating_text_size_summary">單位：sp</string>
+    <string name="floating_text_landscape_width_title">橫屏時懸浮窗的寬度</string>
+    <string name="floating_text_landscape_width_summary"><![CDATA[
+    範圍在屏幕寬度的 30%-100% 之間。
+    ]]></string>
 
     <string name="about_title">關於</string>
     <string name="about_project_repo_title">GitHub 倉庫</string>

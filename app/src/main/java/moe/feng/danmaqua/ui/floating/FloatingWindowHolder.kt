@@ -222,7 +222,7 @@ class FloatingWindowHolder(
             windowLayoutParams.width = screenWidth - horizontalMargin * 2
             windowLayoutParams.x = horizontalMargin
         } else {
-            windowLayoutParams.width = screenWidth / 3 * 2
+            windowLayoutParams.width = screenWidth / 100 * Settings.floatingWidthLandscape
             windowLayoutParams.x = horizontalMargin
         }
         windowLayoutParams.y = windowLayoutParams.y.coerceAtMost(

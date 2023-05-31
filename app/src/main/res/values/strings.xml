@@ -190,6 +190,10 @@
     ]]></string>
     <string name="floating_text_size_title">Subtitle text size</string>
     <string name="floating_text_size_summary">Unit: sp</string>
+    <string name="floating_text_landscape_width_title">Width of floating window when landscape</string>
+    <string name="floating_text_landscape_width_summary"><![CDATA[
+    Range: 30%-100% width of screen.
+    ]]></string>
 
     <string name="about_title">About</string>
     <string name="about_project_repo_title">GitHub Repository</string>

@@ -26,6 +26,7 @@ class FloatingSettingsFragment : BasePreferenceFragment() {
     private val backgroundAlphaPref by preference<SeekBarPreference>("floating_background_alpha")
     private val textSizePref by preference<SeekBarPreference>("floating_text_size")
     private val textGravityPref by preference<DropDownPreference>("floating_text_gravity")
+    private val floatingWidthPref by preference<SeekBarPreference>("floating_text_landscape_width")
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         addPreferencesFromResource(R.xml.preference_floating)
@@ -66,6 +67,13 @@ class FloatingSettingsFragment : BasePreferenceFragment() {
                     "end" -> Gravity.END
                     else -> Gravity.START
                 }
+            }
+            true
+        }
+
+        floatingWidthPref.onValueChanged { value ->
+            Settings.commit {
+                floatingWidthLandscape = value.coerceIn(30..100)
             }
             true
         }

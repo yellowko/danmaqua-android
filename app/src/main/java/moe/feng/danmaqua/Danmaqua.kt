@@ -131,6 +131,10 @@ object Danmaqua {
             key = "floating_text_gravity", defaultValue = Gravity.START
         )
 
+        var floatingWidthLandscape: Int by mmkv.intProperty(
+            key = "floating_text_landscape_width", defaultValue = 30
+        )
+
         var saveHistory: Boolean by mmkv.booleanProperty(
             key = "save_history", defaultValue = false
         )

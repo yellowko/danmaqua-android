@@ -41,4 +41,13 @@
         android:entryValues="@array/text_gravity_entry_values"
         app:useSimpleSummaryProvider="true"/>
 
+    <androidx.preference.SeekBarPreference
+        android:key="floating_text_landscape_width"
+        android:title="@string/floating_text_landscape_width_title"
+        android:summary="@string/floating_text_landscape_width_summary"
+        android:icon="@drawable/ic_developer_mode_24_text_color_primary"
+        android:max="@integer/floating_width_landscape_max"
+        app:min="@integer/floating_width_landscape_min"
+        app:showSeekBarValue="true"/>
+
 </androidx.preference.PreferenceScreen>
