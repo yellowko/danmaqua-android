@@ -2,6 +2,7 @@ package moe.feng.danmaqua.ui.proxy
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.lifecycle.lifecycleScope
 import com.google.code.regexp.Pattern
 import kotlinx.coroutines.Dispatchers
@@ -17,28 +18,42 @@ import moe.feng.danmaqua.service.DanmakuListenerService
 import moe.feng.danmaqua.ui.common.BaseActivity
 import moe.feng.danmaqua.ui.subscription.dialog.ConfirmSubscribeStreamerDialogFragment
 import androidx.content.eventsHelper
+import kotlinx.TAG
+import moe.feng.danmaqua.util.HttpUtils
 
 class LiveShareProxyActivity : BaseActivity(), OnConfirmSubscribeStreamerListener {
 
     companion object {
 
         const val REGEX = "(https?)://live\\.bilibili\\.com/(\\d+)"
+        const val shortREGEX = "(https?)://b23\\.tv/([0-9a-zA-Z]+)"
 
         private const val CONFIRM_DIALOG_TAG = "LiveShareProxyActivity"
 
     }
 
     private var shouldFinishAfterOnCreate: Boolean = true
-
+    private suspend fun getRoomID(url: String) : String? = withContext(Dispatchers.IO) {
+        try {
+            return@withContext HttpUtils.getRedirectURL(url)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            null
+        }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         eventsHelper.registerListener(this, CONFIRM_DIALOG_TAG)
 
         lifecycleScope.launch {
-            val text = intent.getStringExtra(Intent.EXTRA_TEXT)
+            var text = intent.getStringExtra(Intent.EXTRA_TEXT)
             if (text != null) {
                 try {
+                    val shortMatcher = Pattern.compile(shortREGEX).matcher(text)
+                    if (shortMatcher.find()) {
+                        text = getRoomID(shortMatcher.group(0))
+                    }
                     val matcher = Pattern.compile(REGEX).matcher(text)
                     if (matcher.find()) {
                         val roomId = matcher.group(2).toLong()

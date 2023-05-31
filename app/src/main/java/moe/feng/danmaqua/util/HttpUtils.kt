@@ -35,6 +35,32 @@ object HttpUtils {
         return requestAsJson(request, T::class.java)
     }
 
+
+    class LoggingInterceptor : Interceptor {
+        override fun intercept(chain: Interceptor.Chain): Response {
+            val request: Request = chain.request()
+            val response: Response = chain.proceed(request)
+            return response
+        }
+
+        companion object {
+            private const val TAG = "LoggingInterceptor"
+        }
+    }
+
+    suspend fun getRedirectURL(url: String): String {
+        val client: OkHttpClient = OkHttpClient.Builder()
+        .addInterceptor(LoggingInterceptor())
+        .build()
+        val request: Request = Request.Builder()
+            .url(url)
+            .build()
+        val response = client.newCall(request).execute()
+        Log.d(TAG, "Request url: ${response.request.url}")
+        return response.request.url.toString()
+
+    }
+
     object ForceHttpsInterceptor : Interceptor {
 
         private val KNOWN_SUPPORTED_HOSTS = arrayOf(
