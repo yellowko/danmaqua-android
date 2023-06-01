@@ -170,6 +170,7 @@ class NewSubscriptionActivity : BaseActivity(),
         setRecommendationViews(true)
         try {
             recommendation = DanmaquaApi.getRecommendation()
+            recommendation!!.data = recommendation!!.data.shuffled().take(10)
         } catch (e: Exception) {
             e.printStackTrace()
         }

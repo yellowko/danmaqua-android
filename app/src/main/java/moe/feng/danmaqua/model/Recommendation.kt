@@ -6,7 +6,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class Recommendation(
     val version: Int,
-    val data: List<Item>
+    var data: List<Item>
 ) : Parcelable {
 
     @Parcelize
