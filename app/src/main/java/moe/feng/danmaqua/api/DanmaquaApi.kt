@@ -11,8 +11,8 @@ import okhttp3.Request
 
 object DanmaquaApi {
 
-    const val API_HOST_CN = "https://danmaqua-cn.api.feng.moe"
-    const val API_HOST_INTERNATIONAL = "https://danmaqua-intl.api.feng.moe"
+    const val API_HOST_CN = "https://raw.kgithub.com/yellowko/danmaqua-data/master"
+    const val API_HOST_INTERNATIONAL = "https://raw.githubusercontent.com/yellowko/danmaqua-data/master"
 
     private suspend inline fun <reified T : Any> apiRequest(
         requestPath: String
@@ -25,7 +25,7 @@ object DanmaquaApi {
             .build()
 
         try {
-            HttpUtils.requestAsJson<T>(intlRequest)
+            HttpUtils.requestAsJson<T>(cnRequest)
         } catch (e: Exception) {
             HttpUtils.requestAsJson<T>(cnRequest)
         }
