@@ -18,6 +18,7 @@ import kotlinx.TAG
 import moe.feng.danmaqua.util.ext.booleanProperty
 import moe.feng.danmaqua.util.ext.intProperty
 import moe.feng.danmaqua.util.ext.jsonArrayProperty
+import moe.feng.danmaqua.util.ext.notnullStringProperty
 
 /**
  * Danmaqua constants and settings
@@ -48,6 +49,8 @@ object Danmaqua {
 
     const val DEFAULT_FILTER_PATTERN =
         "(?<who>[^$LEFT_PARENTHESIS]*)[$LEFT_PARENTHESIS](?<text>[^$RIGHT_PARENTHESIS]*)[$RIGHT_PARENTHESIS]?"
+
+    const val URL_PATTERN = "(https?|ftp|file)://[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]"
 
     object Settings {
 
@@ -133,6 +136,10 @@ object Danmaqua {
 
         var floatingWidthLandscape: Int by mmkv.intProperty(
             key = "floating_text_landscape_width", defaultValue = 30
+        )
+
+        var customRepositoryUrl: String by mmkv.notnullStringProperty(
+            key = "custom_repository_url", defaultValue = "https://raw.kkgithub.com/yellowko/danmaqua-data/master"
         )
 
         var saveHistory: Boolean by mmkv.booleanProperty(

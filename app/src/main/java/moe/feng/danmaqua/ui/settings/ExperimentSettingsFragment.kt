@@ -7,18 +7,17 @@ import android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_ENABLED
 import android.os.Bundle
 import android.widget.Toast
 import androidx.core.content.getSystemService
-import androidx.preference.CheckBoxPreference
-import androidx.preference.Preference
+import androidx.preference.*
+import com.google.code.regexp.Pattern
 import com.google.firebase.iid.FirebaseInstanceId
 import moe.feng.danmaqua.BuildConfig
+import moe.feng.danmaqua.Danmaqua
 import moe.feng.danmaqua.Danmaqua.ACTION_PREFIX
 import moe.feng.danmaqua.Danmaqua.Settings
 import moe.feng.danmaqua.R
 import moe.feng.danmaqua.ui.proxy.B23ProxyActivity
 import moe.feng.danmaqua.ui.proxy.LiveShareProxyActivity
 import moe.feng.danmaqua.util.IntentUtils
-import androidx.preference.onClick
-import androidx.preference.onValueChanged
 
 class ExperimentSettingsFragment : BasePreferenceFragment() {
 
@@ -34,6 +33,7 @@ class ExperimentSettingsFragment : BasePreferenceFragment() {
     private val enabledAnalyticsPref by preference<CheckBoxPreference>("enabled_analytics")
     private val proxyB23Url by preference<CheckBoxPreference>("proxy_b23_url")
     private val proxyLiveShareUrl by preference<CheckBoxPreference>("proxy_live_share_url")
+    private val customUrlPref by preference<EditTextPreference>("custom_repository_url")
 
     override fun getActivityTitle(context: Context): CharSequence? {
         return context.getString(R.string.experiment_settings_title)
@@ -82,6 +82,25 @@ class ExperimentSettingsFragment : BasePreferenceFragment() {
                 enabledAnalytics = value
             }
             true
+        }
+
+        customUrlPref.text=Settings.customRepositoryUrl
+        customUrlPref.onValueChanged {value ->
+            if(Pattern.compile(Danmaqua.URL_PATTERN).matcher(value).find()){
+            Settings.commit {
+                    customRepositoryUrl = value
+            }
+            true
+            }
+            else
+            {
+                Toast.makeText(
+                    context,
+                    R.string.toast_illegal_url,
+                    Toast.LENGTH_LONG
+                ).show()
+                false
+            }
         }
 
         setPreferenceClickListener("restart_to_intro") {

@@ -12,6 +12,13 @@
         android:title="@string/proxy_live_share_title"
         android:summary="@string/proxy_live_share_summary"/>
 
+    <androidx.preference.EditTextPreference
+        android:key="custom_repository_url"
+        android:title="@string/custom_repository_url_title"
+        android:defaultValue="sdad"
+        android:summary="@string/custom_repository_url_summary"
+        android:icon="@drawable/ic_github_24_text_color_primary"/>
+
     <Preference
         android:key="restart_to_intro"
         android:title="@string/restart_to_intro_title"/>

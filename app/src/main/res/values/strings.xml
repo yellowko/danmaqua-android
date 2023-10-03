@@ -321,6 +321,11 @@
     <string name="proxy_live_share_summary"><![CDATA[
     You can share live link to FloatingSubtitle to launch quickly.
     ]]></string>
+    <string name="custom_repository_url_title">Custom Repository URL</string>
+    <string name="custom_repository_url_summary"><![CDATA[
+    If you can not visit github or you want to change the vtbs\' data by yourself, you can input a custom url of data repository to replace the default, like a mirror url.
+    ]]></string>
+    <string name="toast_illegal_url">Please input a valid URL, such as \"https://raw.githubusercontent.com/yellowko/danmaqua-data/master\".</string>
 
     <string name="more_settings_button">More settings</string>
 
